@@ -32,4 +32,45 @@ Instructions to run ```train_simple.py``` & ```train_attention.py```  (Comments 
 - ```pred_attention.csv``` has prediction of test dataset using seq2seq model with attention.
 - ```Assignment_3.ipynb``` has wandb sweeps which I ran for simple seq2seq model
 - ```Assignment_3_attention.ipynb``` has wandb sweeps which I ran for seqseq model with attention.
+- ```Best_model_without_attention.ipynb``` has the best seq2seq model without attention
+- ```Best_model_with_attention.ipynb``` has best seq2seq model with attention
 ----------------------------------------------------------------
+
+Wandb Project Report Link: https://api.wandb.ai/links/shashwat_mm19b053/gag9wm0x
+
+----------------------------------------------------------------
+
+Functions and Classes Used:
+
+- ```get_data```: Used to get training,test & validation data
+- ```get_token_maps_length```: It is used to get english and hindi token map (dictionary) and maximum sequence length both in english and hindi.
+- ```pre_process```: The function is used to get input embeddings using the token map for both english and hindi
+- Class ```CustomDataset``` has been created for making a dataloader
+- ```custom_collate```: It has been created so that batch size can be changed to 2nd dimension in dataloader instead of first.
+- Encoder, Decoder, Seq2Seq class made for making the model.
+- ```build_model```: Function that creates the seq2seq model.
+- ```train```: To train the model
+- ```evaluate```: To evaluate the model
+
+
+### Workflow
+
+The ```get_data``` function is first used to get the data in raw format, then ```get_token_maps_length``` function is used to get token maps as dictionary format for both english and hindi words, it is also used to get maximum sequence length for both english and hindi words. ```pre_process``` function is then used to get input embeddings using the token map. ```CustomDataset``` converts the data such that it can be used for pytorch.  This completes the processing of data part.
+
+```build_model``` is then used to cretae the Seq2Seq model with different hyperparameters, ``` train``` is used for training and ```evaluate``` is used to evaluate on test and validation data.
+
+## Results
+
+
+ | | Without Attention | With Attention |
+ |---------|-------|--------------|
+ | Hidden Unit Size | 512 | 512 |
+ | Embedding Dimension | 256 | 128 |
+ | Epochs | 25 | 25 |
+ | No of encoder-decoder | 2 | 1 |
+ | Bi-directional | False | True(Encoder only) |
+ | Learning Rate | 0.0001 | 0.0001 |
+ | Batch Size | 64 | 64 |
+ | Cell Type | LSTM | LSTM |
+ | Dropout | 0.27 | 0.1 |
+ | Test Accuracy(Exact String Match) | 35.57%| 40.72% |
