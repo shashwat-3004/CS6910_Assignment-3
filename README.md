@@ -25,3 +25,11 @@ Instructions to run ```train_simple.py``` & ```train_attention.py```  (Comments 
 | `-er_dr`, `--enc_dec_layers` | 2 | No. of encoder and decoder layer (Not used for ```train_attention.py```) |
 | `-dp`, `--dropout` | 0.1 | dropout |
 
+```train_simple/attention.py``` returns the wandb logs generated on Training and Validation dataset. It also prints out the loss associated with test dataset and character-level accuracy.
+
+----------------------------------------------------------------
+- ```pred_vanilla.csv``` has predictions of test dataset using simple seq2seq model
+- ```pred_attention.csv``` has prediction of test dataset using seq2seq model with attention.
+- ```Assignment_3.ipynb``` has wandb sweeps which I ran for simple seq2seq model
+- ```Assignment_3_attention.ipynb``` has wandb sweeps which I ran for seqseq model with attention.
+----------------------------------------------------------------
